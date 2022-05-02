@@ -14,7 +14,8 @@ $(function () {
             var assignee = data['ticket.assignee.user']
             if(assignee){
               if(assignee.id != user.id){
-                updateAssignee(client, ticketId, user, assignee.name)
+                client.set('ticket.assignee', { userId: user.id, groupId:user.groups[0].id})
+                message(`Ticket is assigned to ${user.name}, Please save to update it.`)
               }else{
                 message(`Ticket is already assigned to ${user.name}`)
               }
